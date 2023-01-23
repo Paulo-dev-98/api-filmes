@@ -1,0 +1,180 @@
+swagger: '2.0'
+info:
+    title: Filmes
+    version: 1.0.0
+    description: 'Api para testar o open api generator '
+    contact:
+        name: Filmes
+    license:
+        name: MIT License
+        url: 'https://opensource.org/licenses/MIT'
+consumes:
+    - application/json
+produces:
+    - application/json
+paths:
+    /filmes:
+        get:
+            consumes:
+                - application/json
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: dados do filme
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/definitions/Filmes'
+                    examples:
+                        application/json:
+                            id: 1
+                            nome: nome do filme
+                            genero: genero do filme
+                            sinopse: sinopse do filme
+                            data de estreia: data de estreia do filme
+            summary: cadastro de filmes
+            description: buscar filmes
+        post:
+            responses:
+                '200':
+                    description: Response
+                    schema:
+                        $ref: '#/definitions/Filmes'
+            operationId: postFilme
+            summary: cadastrar filme
+            description: cadastrar um filme
+    /pessoas:
+        get:
+            responses:
+                '200':
+                    description: Successful response - returns an array of `Pessoa` entities.
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/definitions/Pessoa'
+            operationId: getPessoas
+            summary: List All Pessoas
+            description: Gets a list of all `Pessoa` entities.
+        post:
+            parameters:
+                -
+                    name: body
+                    description: A new `Pessoa` to be created.
+                    schema:
+                        $ref: '#/definitions/Pessoa'
+                    in: body
+                    required: true
+            responses:
+                '201':
+                    description: Successful response.
+            operationId: createPessoa
+            summary: Create a Pessoa
+            description: Creates a new instance of a `Pessoa`.
+    '/pessoas/{pessoaId}':
+        get:
+            responses:
+                '200':
+                    description: Successful response - returns a single `Pessoa`.
+                    schema:
+                        $ref: '#/definitions/Pessoa'
+            operationId: getPessoa
+            summary: Get a Pessoa
+            description: Gets the details of a single instance of a `Pessoa`.
+        put:
+            parameters:
+                -
+                    name: body
+                    description: Updated `Pessoa` information.
+                    schema:
+                        $ref: '#/definitions/Pessoa'
+                    in: body
+                    required: true
+            responses:
+                '202':
+                    description: Successful response.
+            operationId: updatePessoa
+            summary: Update a Pessoa
+            description: Updates an existing `Pessoa`.
+        delete:
+            responses:
+                '204':
+                    description: Successful response.
+            operationId: deletePessoa
+            summary: Delete a Pessoa
+            description: Deletes an existing `Pessoa`.
+        parameters:
+            -
+                name: pessoaId
+                description: A unique identifier for a `Pessoa`.
+                in: path
+                required: true
+                type: string
+    '/filmes/{filmeId}':
+        get:
+            responses:
+                '200':
+                    description: success
+                    schema:
+                        $ref: '#/definitions/Filmes'
+            operationId: getFilmePorId
+            summary: get filme
+        put:
+            responses:
+                '202':
+                    description: success
+                    schema:
+                        $ref: '#/definitions/Filmes'
+            operationId: putFilme
+            summary: put filme
+            description: Atualizar filme
+        delete:
+            responses:
+                '204':
+                    description: success
+            description: deletar filme
+        parameters:
+            -
+                name: filmeId
+                in: path
+                required: true
+                type: integer
+definitions:
+    Pessoa:
+        title: Root Type for Pessoa
+        description: ''
+        type: object
+        properties:
+            nome:
+                type: string
+            Cpf:
+                type: string
+        example:
+            nome: nome pessoa
+            Cpf: cpf
+    Filmes:
+        title: Root Type for Filmes
+        description: filmes
+        type: object
+        properties:
+            id:
+                format: int32
+                type: integer
+            nome:
+                type: string
+            genero:
+                type: string
+            sinopse:
+                type: string
+            data de estreia:
+                type: string
+        example:
+            id: 1
+            nome: nome do filme
+            genero: genero do filme
+            sinopse: sinopse do filme
+            data de estreia: data de estreia do filme
+securityDefinitions:
+    filme:
+        type: basic
+        description: banco de filmes
