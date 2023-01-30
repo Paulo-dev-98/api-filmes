@@ -11,15 +11,23 @@ import com.filme.openapigenerator.filme.api.FilmesApi;
 import com.filme.openapigenerator.model.dto.FilmesDto;
 import com.filme.openapigenerator.service.FilmesService;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 @RestController
 @RequestMapping("/api/filmes")
 public class FilmeController implements FilmesApi {
+	
+	Logger logger = LogManager.getLogger(FilmeController.class);
 
 	@Autowired
 	private FilmesService filmesService;
 
 	@PostMapping
 	public ResponseEntity<FilmesDto> postFilme(@RequestBody FilmesDto filmes) {
+        if(logger.isDebugEnabled()) {
+            logger.debug("Salvar filme - {}", filmes);
+        }
 		return ResponseEntity.ok(filmesService.postFilme(filmes));
 	}
 }

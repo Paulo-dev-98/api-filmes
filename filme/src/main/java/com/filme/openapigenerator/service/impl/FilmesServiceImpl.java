@@ -20,9 +20,9 @@ public class FilmesServiceImpl implements FilmesService {
 
 	@Override
 	public FilmesDto postFilme(FilmesDto filmesDto) {
-	       Filmes filmes = filmesMapper.toEntity(filmesDto);
-	       filmesRepository.save(filmes);
-	       return filmesMapper.toDto(filmes);
+        Filmes filmes = filmesMapper.modelMapperFilmes().map(filmesDto, Filmes.class);
+        Filmes cadFilme = filmesRepository.save(filmes);
+        return filmesMapper.modelMapperFilmes().map(cadFilme, FilmesDto.class);
 	}
 
 }
