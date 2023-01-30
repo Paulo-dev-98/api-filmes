@@ -1,6 +1,6 @@
 package com.filme.openapigenerator.service;
 
-import com.filme.openapigenerator.model.dto.FilmesDto;
+import com.filme.openapigenerator.filme.model.FilmesDto;
 
 public interface FilmesService {
 

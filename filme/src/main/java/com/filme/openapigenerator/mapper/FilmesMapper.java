@@ -6,8 +6,9 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
+import com.filme.openapigenerator.converter.FilmesConverter;
+import com.filme.openapigenerator.filme.model.FilmesDto;
 import com.filme.openapigenerator.model.Filmes;
-import com.filme.openapigenerator.model.dto.FilmesDto;
 
 @Component
 public class FilmesMapper {
@@ -19,7 +20,8 @@ public class FilmesMapper {
 
         final PropertyMap<Filmes, FilmesDto> toDto = new PropertyMap<Filmes,FilmesDto>() {
             protected void configure() {
-                map().setId(source.getId());
+            	using(FilmesConverter.longToInteger())
+                  .map(source.getId(), destination.getId());
                 map().setNome(source.getName());
                 map().setGenero(source.getCategory());
                 map().setDataDeEstreia(source.getMoviePremiere());
@@ -29,7 +31,8 @@ public class FilmesMapper {
 
         final PropertyMap<FilmesDto, Filmes> toEntity = new PropertyMap<FilmesDto, Filmes>() {
             protected void configure() {
-              map().setId(source.getId());
+              using(FilmesConverter.integerToLong())
+                .map(source.getId(), destination.getId());
               map().setName(source.getNome());
               map().setCategory(source.getGenero());
               map().setMoviePremiere(source.getDataDeEstreia());
