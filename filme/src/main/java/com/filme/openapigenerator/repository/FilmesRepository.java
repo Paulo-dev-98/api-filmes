@@ -8,4 +8,5 @@ import com.filme.openapigenerator.model.Filmes;
 @Repository
 public interface FilmesRepository extends JpaRepository<Filmes, Long> {
 
+
 }
