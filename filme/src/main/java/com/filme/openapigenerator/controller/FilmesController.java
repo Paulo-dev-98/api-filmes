@@ -5,12 +5,9 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,8 +16,10 @@ import com.filme.openapigenerator.filme.api.FilmesApi;
 import com.filme.openapigenerator.filme.model.FilmesDto;
 import com.filme.openapigenerator.service.FilmesService;
 
+import jakarta.validation.Valid;
+
 @RestController
-@RequestMapping("/api/filmes")
+@RequestMapping("/api")
 public class FilmesController implements FilmesApi {
 	
 	Logger logger = LogManager.getLogger(FilmesController.class);
@@ -28,44 +27,44 @@ public class FilmesController implements FilmesApi {
 	@Autowired
 	private FilmesService filmesService;
 	
-	@GetMapping
-	public ResponseEntity<List<FilmesDto>> getFilmes(){
+	@Override
+	public ResponseEntity<List<FilmesDto>> getfilmes(){
 	    if(logger.isDebugEnabled()) {
             logger.debug("Listar filmes");
         }
 		return ResponseEntity.ok(filmesService.getFilme());
 	}
 	
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<FilmesDto> getFilmesById(@PathVariable("id") String id) {
+    @Override
+    public ResponseEntity<FilmesDto> getfilmesbyid(@PathVariable("filmesId") String filmesId) {
         if(logger.isDebugEnabled()) {
-            logger.debug("Buscar Filme de Id {}", id);
+            logger.debug("Buscar Filme de Id {}", filmesId);
         }
-        return ResponseEntity.ok(filmesService.getFilmePorId(id));
+        return new ResponseEntity<>(filmesService.getFilmePorId(filmesId), HttpStatus.OK);
     }
 
-	@PostMapping
-	public ResponseEntity<FilmesDto> postFilme(@RequestBody FilmesDto filmes) {
+	@Override
+	public ResponseEntity<FilmesDto> createFilmes(@Valid @RequestBody FilmesDto body) {
         if(logger.isDebugEnabled()) {
-            logger.debug("Salvar filme - {}", filmes);
+            logger.debug("Salvar filme - {}", body);
         }
-		return ResponseEntity.ok(filmesService.postFilme(filmes));
+        return new ResponseEntity<>(filmesService.postFilme(body), HttpStatus.OK);
 	}
 	
-	@PutMapping(value = "/put")
-	public ResponseEntity<FilmesDto> putFilme(@RequestBody FilmesDto filmes) {
+	@Override
+	public ResponseEntity<FilmesDto> updatefilmes(String filmesId, @Valid @RequestBody FilmesDto body) {
 		if(logger.isDebugEnabled()) {
-			logger.debug("Atualizar filme - {}", filmes);
+			logger.debug("Atualizar filme - {}", body);
 		}
-		return ResponseEntity.ok(filmesService.putFilme(filmes));
+		return new ResponseEntity<>(filmesService.putFilme(filmesId, body), HttpStatus.OK);
 	}
 	
-	@DeleteMapping(value = "/delete/{id}")
-	public ResponseEntity<FilmesDto> deletarFilme(@PathVariable("id") Long id){
+	@Override
+	public ResponseEntity<Void> deletefilmes(@PathVariable("filmesId") String filmesId){
 	    if(logger.isDebugEnabled()) {
             logger.debug("Deletar Filme");
         }
-		filmesService.deleteFilme(id);
+		filmesService.deleteFilme(filmesId);
 		return ResponseEntity.ok().build();
 	}
 }

@@ -44,15 +44,22 @@ public class FilmesServiceImpl implements FilmesService {
 	}
 	
 	@Override
-	public FilmesDto putFilme(FilmesDto filmesDto) {
-		Filmes filmes = filmesMapper.modelMapperFilmes().map(filmesDto, Filmes.class);
-		Filmes cadFilme = filmesRepository.save(filmes);
+	public FilmesDto putFilme(String filmesId, FilmesDto filmesDto) {
+		
+		Filmes cadFilme = filmesRepository.findById(FilmesConverter.stringToLong(filmesId))
+				.orElseThrow(() -> new RuntimeException(" id não encontrado"));
+		cadFilme.setName(filmesDto.getNome());
+		cadFilme.setCategory(filmesDto.getGenero());
+		cadFilme.setMoviePremiere(filmesDto.getDataDeEstreia());
+		cadFilme.setSummary(filmesDto.getSinopse());
+	
+		filmesRepository.save(cadFilme);
 		return filmesMapper.modelMapperFilmes().map(cadFilme, FilmesDto.class);
 	}
 	
 	@Override
-	public void deleteFilme(Long id) {
-		Filmes filmes = filmesRepository.findById(id)
+	public void deleteFilme(String id) {
+		Filmes filmes = filmesRepository.findById(FilmesConverter.stringToLong(id))
 				.orElseThrow(() -> new RuntimeException("id não encontrado"));
 		filmesRepository.delete(filmes);	
 	}

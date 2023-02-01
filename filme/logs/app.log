@@ -1000,3 +1000,126 @@ java.lang.Error: Unresolved compilation problem:
 2023-01-31 16:43:12,885 DEBUG - Buscar Filme de Id null
 2023-01-31 16:45:15,370 DEBUG - Buscar Filme de Id 1
 2023-01-31 16:46:33,755 DEBUG - Buscar Filme de Id 1
+2023-02-01 10:57:14,178 DEBUG - Salvar filme - class FilmesDto {
+    id: 1
+    nome:  O fantasma da ópera
+    genero: Musical, Romance
+    sinopse: O Fantasma, em seu esconderijo em baixo de uma casa de ópera em Paris, no Século 19, planeja uma forma de se aproximar da vocalista Christine Daae.
+    dataDeEstreia: 9 de outubro de 1986
+}
+2023-02-01 10:57:25,757 DEBUG - Salvar filme - class FilmesDto {
+    id: null
+    nome:  O fantasma da ópera
+    genero: Musical, Romance
+    sinopse: O Fantasma, em seu esconderijo em baixo de uma casa de ópera em Paris, no Século 19, planeja uma forma de se aproximar da vocalista Christine Daae.
+    dataDeEstreia: 9 de outubro de 1986
+}
+2023-02-01 11:24:18,456 DEBUG - Salvar filme - class FilmesDto {
+    id: null
+    nome:  O fantasma da ópera
+    genero: Musical, Romance
+    sinopse: O Fantasma, em seu esconderijo em baixo de uma casa de ópera em Paris, no Século 19, planeja uma forma de se aproximar da vocalista Christine Daae.
+    dataDeEstreia: 9 de outubro de 1986
+}
+2023-02-01 11:24:46,779 DEBUG - Salvar filme - class FilmesDto {
+    id: null
+    nome:  O fantasma da ópera
+    genero: Musical, Romance
+    sinopse: O Fantasma, em seu esconderijo em baixo de uma casa de ópera em Paris, no Século 19, planeja uma forma de se aproximar da vocalista Christine Daae.
+    dataDeEstreia: 9 de outubro de 1986
+}
+2023-02-01 11:26:11,046 DEBUG - Salvar filme - class FilmesDto {
+    id: null
+    nome:  O fantasma da ópera
+    genero: Musical, Romance
+    sinopse: O Fantasma, em seu esconderijo em baixo de uma casa de ópera em Paris, no Século 19, planeja uma forma de se aproximar da vocalista Christine Daae.
+    dataDeEstreia: 9 de outubro de 1986
+}
+2023-02-01 11:27:20,825 DEBUG - Salvar filme - class FilmesDto {
+    id: null
+    nome:  O fantasma da ópera
+    genero: Musical, Romance
+    sinopse: O Fantasma, em seu esconderijo em baixo de uma casa de ópera em Paris, no Século 19, planeja uma forma de se aproximar da vocalista Christine Daae.
+    dataDeEstreia: 9 de outubro de 1986
+}
+2023-02-01 11:29:39,314 DEBUG - Salvar filme - class FilmesDto {
+    id: null
+    nome:  O fantasma da ópera
+    genero: Musical, Romance
+    sinopse: O Fantasma, em seu esconderijo em baixo de uma casa de ópera em Paris, no Século 19, planeja uma forma de se aproximar da vocalista Christine Daae.
+    dataDeEstreia: 9 de outubro de 1986
+}
+2023-02-01 11:29:40,510 DEBUG - Salvar filme - class FilmesDto {
+    id: null
+    nome:  O fantasma da ópera
+    genero: Musical, Romance
+    sinopse: O Fantasma, em seu esconderijo em baixo de uma casa de ópera em Paris, no Século 19, planeja uma forma de se aproximar da vocalista Christine Daae.
+    dataDeEstreia: 9 de outubro de 1986
+}
+2023-02-01 11:29:41,462 DEBUG - Salvar filme - class FilmesDto {
+    id: null
+    nome:  O fantasma da ópera
+    genero: Musical, Romance
+    sinopse: O Fantasma, em seu esconderijo em baixo de uma casa de ópera em Paris, no Século 19, planeja uma forma de se aproximar da vocalista Christine Daae.
+    dataDeEstreia: 9 de outubro de 1986
+}
+2023-02-01 11:32:17,258 DEBUG - Salvar filme - class FilmesDto {
+    id: null
+    nome:  O fantasma da ópera
+    genero: Musical, Romance
+    sinopse: O Fantasma, em seu esconderijo em baixo de uma casa de ópera em Paris, no Século 19, planeja uma forma de se aproximar da vocalista Christine Daae.
+    dataDeEstreia: 9 de outubro de 1986
+}
+2023-02-01 11:36:35,787 DEBUG - Salvar filme - class FilmesDto {
+    id: null
+    nome:  O fantasma da ópera
+    genero: Musical, Romance
+    sinopse: O Fantasma, em seu esconderijo em baixo de uma casa de ópera em Paris, no Século 19, planeja uma forma de se aproximar da vocalista Christine Daae.
+    dataDeEstreia: 9 de outubro de 1986
+}
+2023-02-01 11:44:03,883 DEBUG - Salvar filme - class FilmesDto {
+    id: null
+    nome:  O fantasma da ópera
+    genero: Musical, Romance
+    sinopse: O Fantasma, em seu esconderijo em baixo de uma casa de ópera em Paris, no Século 19, planeja uma forma de se aproximar da vocalista Christine Daae.
+    dataDeEstreia: 9 de outubro de 1986
+}
+2023-02-01 11:44:38,470 DEBUG - Salvar filme - class FilmesDto {
+    id: null
+    nome:  O fantasma da ópera
+    genero: Musical, Romance
+    sinopse: O Fantasma, em seu esconderijo em baixo de uma casa de ópera em Paris, no Século 19, planeja uma forma de se aproximar da vocalista Christine Daae.
+    dataDeEstreia: 9 de outubro de 1986
+}
+2023-02-01 11:50:33,936 DEBUG - Salvar filme - class FilmesDto {
+    id: null
+    nome:  O fantasma da ópera
+    genero: Musical, Romance
+    sinopse: O Fantasma, em seu esconderijo em baixo de uma casa de ópera em Paris, no Século 19, planeja uma forma de se aproximar da vocalista Christine Daae.
+    dataDeEstreia: 9 de outubro de 1986
+}
+2023-02-01 12:15:49,655 DEBUG - Listar filmes
+2023-02-01 12:17:58,864 DEBUG - Listar filmes
+2023-02-01 12:22:28,381 DEBUG - Buscar Filme de Id 1
+2023-02-01 12:22:59,438 DEBUG - Buscar Filme de Id 1
+2023-02-01 12:25:25,055 DEBUG - Atualizar filme - class FilmesDto {
+    id: null
+    nome:  O fantasma da ópera
+    genero: Musical, Romance
+    sinopse: O Fantasma, em seu esconderijo em baixo de uma casa de ópera em Paris, no Século 19, planeja uma forma de se aproximar da vocalista Christine Daae.
+    dataDeEstreia: 9 de outubro de 1990
+}
+2023-02-01 12:25:39,378 DEBUG - Atualizar filme - class FilmesDto {
+    id: null
+    nome:  O fantasma da ópera
+    genero: Musical, Romance
+    sinopse: O Fantasma, em seu esconderijo em baixo de uma casa de ópera em Paris, no Século 19, planeja uma forma de se aproximar da vocalista Christine Daae.
+    dataDeEstreia: 9 de outubro de 1990
+}
+2023-02-01 12:28:23,056 DEBUG - Atualizar filme - class FilmesDto {
+    id: null
+    nome:  O fantasma da ópera
+    genero: Musical, Romance
+    sinopse: O Fantasma, em seu esconderijo em baixo de uma casa de ópera em Paris, no Século 19, planeja uma forma de se aproximar da vocalista Christine Daae.
+    dataDeEstreia: 9 de outubro de 1990
+}
