@@ -12,6 +12,7 @@ import com.filme.openapigenerator.mapper.FilmesMapper;
 import com.filme.openapigenerator.model.Filmes;
 import com.filme.openapigenerator.repository.FilmesRepository;
 import com.filme.openapigenerator.service.FilmesService;
+import com.filme.openapigenerator.validator.FilmeValidator;
 
 @Service
 public class FilmesServiceImpl implements FilmesService {
@@ -22,6 +23,9 @@ public class FilmesServiceImpl implements FilmesService {
 	@Autowired
 	FilmesMapper filmesMapper;
 	
+	@Autowired
+	FilmeValidator filmesValidator;
+	
     @Override
     public List<FilmesDto> getFilme() {
         List<Filmes> filmes = filmesRepository.findAll();
@@ -30,6 +34,8 @@ public class FilmesServiceImpl implements FilmesService {
     
     @Override
     public FilmesDto getFilmePorId(String id) {
+    	Long idFilme = FilmesConverter.stringToLong(id);
+    	filmesValidator.validate(idFilme);
         Filmes filmes = filmesRepository
                            .findById(FilmesConverter.stringToLong(id))
                            .orElse(new Filmes());
@@ -45,16 +51,12 @@ public class FilmesServiceImpl implements FilmesService {
 	
 	@Override
 	public FilmesDto putFilme(String filmesId, FilmesDto filmesDto) {
-		
-		Filmes cadFilme = filmesRepository.findById(FilmesConverter.stringToLong(filmesId))
-				.orElseThrow(() -> new RuntimeException(" id não encontrado"));
-		cadFilme.setName(filmesDto.getNome());
-		cadFilme.setCategory(filmesDto.getGenero());
-		cadFilme.setMoviePremiere(filmesDto.getDataDeEstreia());
-		cadFilme.setSummary(filmesDto.getSinopse());
-	
-		filmesRepository.save(cadFilme);
-		return filmesMapper.modelMapperFilmes().map(cadFilme, FilmesDto.class);
+		Long id = FilmesConverter.stringToLong(filmesId);
+        filmesValidator.validate(id);
+		Filmes altFilme = filmesMapper.modelMapperFilmes().map(filmesDto, Filmes.class);
+		altFilme.setId(id);
+		filmesRepository.save(altFilme);
+		return filmesMapper.modelMapperFilmes().map(altFilme, FilmesDto.class);
 	}
 	
 	@Override
