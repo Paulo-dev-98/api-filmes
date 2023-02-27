@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
+import com.filme.openapigenerator.exception.CampoException;
 import com.filme.openapigenerator.exception.ErrorMessage;
 import com.filme.openapigenerator.exception.ResourceNotFoundException;
 
@@ -37,5 +38,16 @@ public class Advice {
 	    
 	    return message;
 	  }
-
+	  
+	  @ExceptionHandler(CampoException.class)
+	  @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+	  public ErrorMessage campoNomeException(CampoException ex, WebRequest request) {
+		  ErrorMessage message = new ErrorMessage(
+				  HttpStatus.BAD_REQUEST.value(),
+				  new Date(),
+				  ex.getMessage(),
+				  request.getDescription(false));
+		  
+		  return message;
+	  }
 }

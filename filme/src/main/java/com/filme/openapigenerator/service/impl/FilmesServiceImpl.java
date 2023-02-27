@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.filme.openapigenerator.converter.FilmesConverter;
+import com.filme.openapigenerator.exception.ResourceNotFoundException;
 import com.filme.openapigenerator.filme.model.FilmesDto;
 import com.filme.openapigenerator.mapper.FilmesMapper;
 import com.filme.openapigenerator.model.Filmes;
@@ -44,6 +45,7 @@ public class FilmesServiceImpl implements FilmesService {
 
 	@Override
 	public FilmesDto postFilme(FilmesDto filmesDto) {
+		filmesValidator.validate(filmesDto);
         Filmes filmes = filmesMapper.modelMapperFilmes().map(filmesDto, Filmes.class);
         Filmes cadFilme = filmesRepository.save(filmes);
         return filmesMapper.modelMapperFilmes().map(cadFilme, FilmesDto.class);
@@ -53,6 +55,7 @@ public class FilmesServiceImpl implements FilmesService {
 	public FilmesDto putFilme(String filmesId, FilmesDto filmesDto) {
 		Long id = FilmesConverter.stringToLong(filmesId);
         filmesValidator.validate(id);
+        filmesValidator.validate(filmesDto);
 		Filmes altFilme = filmesMapper.modelMapperFilmes().map(filmesDto, Filmes.class);
 		altFilme.setId(id);
 		filmesRepository.save(altFilme);
@@ -62,7 +65,8 @@ public class FilmesServiceImpl implements FilmesService {
 	@Override
 	public void deleteFilme(String id) {
 		Filmes filmes = filmesRepository.findById(FilmesConverter.stringToLong(id))
-				.orElseThrow(() -> new RuntimeException("id não encontrado"));
+				.orElseThrow(() -> new ResourceNotFoundException("O id: " + id + " não"
+						+ " foi encontrado"));
 		filmesRepository.delete(filmes);	
 	}
 	

@@ -13,7 +13,7 @@
 	<name>filme</name>
 	<description>Projeto para testar o open api generator</description>
 	<properties>
-		<java.version>12</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 
